@@ -1,0 +1,38 @@
+Python 缓存文件
+
+pycache/
+*.py[cod]
+
+PyInstaller 打包临时文件
+
+build/
+dist/
+*.spec
+
+API 密钥和环境配置
+
+.env
+.env.*
+
+个人长期记忆和备份
+
+memory.json
+memory_backup_*.json
+
+工具调用日志和备份
+
+tool_logs.json
+tool_logs_backup_*.json
+
+学习计划测试数据
+
+learning_plan.json
+
+自动生成的摘要文件
+
+*_summary.txt
+
+编辑器配置
+
+.vscode/
+.idea/
