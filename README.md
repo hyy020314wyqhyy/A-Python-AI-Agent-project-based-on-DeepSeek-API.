@@ -47,7 +47,42 @@ Python_DeepSeek_AI_Agent_36-55/
 
 ```powershell
 python -m pip install -r requirements.txt
+```
+## 五、配置 API Key
 
+PowerShell：
+
+```powershell
+$env:DEEPSEEK_API_KEY="你的DeepSeek_API_Key"
+```
+
+说明：以上命令只在当前 PowerShell 会话中设置环境变量。关闭窗口后，需要重新设置。如果希望长期使用，可以配置 Windows 用户级环境变量。
+
+请勿将真实 API Key 上传到 GitHub 或其他公开平台。
+
+## 六、运行
+
+命令行版本：
+
+```powershell
+python main.py
+```
+
+图形界面版本（可选）：
+
+```powershell
+python gui.py
+```
+
+## 七、自测
+
+运行：
+
+```powershell
+python self_test.py
+```
+
+说明：基础检查可在本地运行；如果已配置 DEEPSEEK_API_KEY，还会额外执行 API 联网检查。
 ## 八、常用命令
 
 | 命令 | 功能 |
@@ -87,7 +122,7 @@ python -m pip install -r requirements.txt
 
 
 
-十、项目说明
+## 十、项目说明
 
 本项目基于原 day2-3.py 逐步模块化开发，并持续完善各项功能。
 
