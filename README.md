@@ -1,10 +1,11 @@
-Python DeepSeek AI Agent
+# Python DeepSeek AI Agent
 
 基于 Python + DeepSeek API 的命令行 AI Agent 示例项目，包含对话、工具调用、长期记忆、任务规划、文件摘要、日志统计等能力。
 
 本项目由原来的单文件版本 day2-3.py 逐步模块化开发，并持续完善了长期记忆、网络连接、文件管理和部署功能。
 
-一、目录结构
+## 一、目录结构
+
 ```text
 Python_DeepSeek_AI_Agent_36-55/
 │
@@ -23,6 +24,7 @@ Python_DeepSeek_AI_Agent_36-55/
 ├── requirements.txt     # 第三方依赖
 └── README.md            # 本说明
 ```
+
 ## 二、各模块职责
 
 | 模块 | 主要函数 | 作用 |
@@ -48,6 +50,7 @@ Python_DeepSeek_AI_Agent_36-55/
 ```powershell
 python -m pip install -r requirements.txt
 ```
+
 ## 五、配置 API Key
 
 PowerShell：
@@ -74,7 +77,46 @@ python main.py
 python gui.py
 ```
 
-## 七、自测
+## 七、Windows EXE 下载与运行
+
+不需要安装 Python，也可以直接使用打包好的 Windows 程序。
+
+### 1. 下载程序
+
+前往 GitHub Releases 页面：
+
+https://github.com/hyy020314wyqhyy/A-Python-AI-Agent-project-based-on-DeepSeek-API../releases
+
+下载 `main.exe`。
+
+### 2. 配置 API Key
+
+运行程序前，需要配置 Windows 系统环境变量：
+
+变量名：
+
+`DEEPSEEK_API_KEY`
+
+变量值：自己的 DeepSeek API Key。
+
+配置完成后，重新打开 PowerShell。
+
+### 3. 启动程序
+
+在 `main.exe` 所在目录打开 PowerShell，运行：
+
+```powershell
+.\main.exe
+```
+
+### 4. 注意事项
+
+- 本程序是命令行控制台程序。
+- 使用 AI 功能需要有效的 DeepSeek API Key。
+- 请勿将自己的 API Key 分享给他人。
+- 程序运行时会在程序所在目录生成记忆文件和工具日志文件。
+
+## 八、自测
 
 运行：
 
@@ -83,7 +125,8 @@ python self_test.py
 ```
 
 说明：基础检查可在本地运行；如果已配置 DEEPSEEK_API_KEY，还会额外执行 API 联网检查。
-## 八、常用命令
+
+## 九、常用命令
 
 | 命令 | 功能 |
 |---|---|
@@ -108,7 +151,7 @@ python self_test.py
 
 输入时以 `/done` 结束多行内容。
 
-## 九、运行中生成的数据文件
+## 十、运行中生成的数据文件
 
 | 文件 | 用途 |
 |---|---|
@@ -120,9 +163,7 @@ python self_test.py
 
 这些文件与程序所在目录一致，请不要随意删除。
 
-
-
-## 十、项目说明
+## 十一、项目说明
 
 本项目基于原 day2-3.py 逐步模块化开发，并持续完善各项功能。
 
