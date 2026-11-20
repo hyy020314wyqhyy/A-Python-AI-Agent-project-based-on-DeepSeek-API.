@@ -12,43 +12,60 @@ from config import API_KEY, API_URL, MODEL
 
 
 
+
 def read_text_file(filename):
     """安全地读取程序所在目录中的普通 TXT 文件。"""
     from pathlib import Path
+    import sys
 
     if not isinstance(filename, str):
         return "错误：文件名必须是字符串。"
+
     if not filename.lower().endswith(".txt"):
         return "错误：目前只允许读取 TXT 文件。"
+
     if Path(filename).name != filename or filename in (".", ".."):
         return "错误：只能读取程序所在目录中的文件。"
 
-    file_path = Path(__file__).resolve().parent / filename
+    # 判断程序是否已经打包成 EXE
+    if getattr(sys, "frozen", False):
+        base_dir = Path(sys.executable).resolve().parent
+    else:
+        base_dir = Path(__file__).resolve().parent
+
+    file_path = base_dir / filename
+
     try:
         if file_path.is_symlink():
             return "错误：不能通过符号链接读取文件。"
+
         if not file_path.exists():
             return "错误：文件不存在。"
+
         if not file_path.is_file():
             return "错误：目标路径不是普通文件。"
+
         if file_path.stat().st_size > 100 * 1024:
             return "错误：文件不能超过 100 KB。"
+
         return file_path.read_text(encoding="utf-8")
+
     except (OSError, UnicodeDecodeError) as e:
         return f"错误：读取文件失败。{e}"
+
+
 
 
 def write_text_file(filename, content):
     """安全地创建 TXT 文件，不覆盖已有文件。"""
     from pathlib import Path
+    import sys
 
     if not isinstance(filename, str):
         return "错误：文件名必须是字符串。"
 
-    
     if not filename.lower().endswith(".txt"):
         return "错误：目前只允许创建 TXT 文件。"
-
 
     if Path(filename).name != filename:
         return "错误：只能在程序所在目录创建文件。"
@@ -64,7 +81,14 @@ def write_text_file(filename, content):
     if content_size > 100 * 1024:
         return "错误：文件内容不能超过 100 KB。"
 
-    file_path = Path(__file__).resolve().parent / filename
+    # 判断程序是否已经打包成 EXE
+    if getattr(sys, "frozen", False):
+        base_dir = Path(sys.executable).resolve().parent
+    else:
+        base_dir = Path(__file__).resolve().parent
+
+    file_path = base_dir / filename
+
 
     try:
         with file_path.open("x", encoding="utf-8") as file:
@@ -77,6 +101,7 @@ def write_text_file(filename, content):
 
     except OSError as e:
         return f"错误：文件创建失败。{e}"
+
 
 
 def list_text_files():
