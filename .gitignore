@@ -8,6 +8,7 @@ PyInstaller 打包临时文件
 build/
 dist/
 *.spec
+!main.spec
 
 API 密钥和环境配置
 
